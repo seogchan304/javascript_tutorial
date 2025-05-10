@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: url('./img/Kakao.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-width: 100%;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="form_container">
+        <form onsubmit="">
+            <div class="form_content">
+                <h1>ToDo</h1>
+                <input id="form_input">
+                <button type="submit">등록</button>
+            </div>
+        </form>
+        <ul id="iodoList"></ul>
+    </div>
+
+    <script>
+        let 배역 = []
+        
+        function 등록하기(event){
+            // form submit의 새로고침을 막는다
+            event.preventDefault();
+
+            // input에 입력된 내용을 가져와서 alert에 띄워봐야지
+            let document.getElementById('form_input').value;
+            alert('등록하기 버튼 눌림')
+
+            // 입력내용을 배열에 push를 하고 배열에 있는 내용을  ul안에 li로 보여준다
+            alert(입력내요);
+        }
+    </script>
+</body>
+</html>
