@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatgpt 앱</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            min-height: 100vh;
+            background-image: url('./img/Kakao.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="fixed-div">
+        <div class="relative-div">
+            <form onsubmit="보내기(event)">
+            <input type="text" id="prompt">
+            <button type="submit" id="submit-btn">보내기</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        let 이미실행중 = false
+        // Chatgpt에 fetch를 통해서 질문을 보내고
+        // 응답을 기다리게 한다음에
+        // 다 받으면 화면에 뿌려주기
+
+
+        // 외부 사이트에 요청하고 응답을 방아와야하기 때문에 async function으로 제작
+        // 응답을 기다려야하기 때문에 await
+        async function 보내기(event){
+            event.preventDefault();
+        // 버튼을 누르면 input에 있는 value를 가져온다      
+        let 입력값 = document.getElementById('prompt').value;
+
+        if(입력값){
+        document.getElementById('prompt').value = '';
+
+        if(이미실행중 === false){
+            이미실행중 = true;
+            document.getElementById('submit-btn').innerHTML = 'ㅇ';
+            document.getElementById('pre').innerHTML += "\n\n사용자: " + 입력값
+
+
+            // gpt에 질문 보내기
+            let 응답결과 = await fetch('지피티링크',{
+                method: 'POST',
+                headers:{
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer 긴 이상한 거"
+                },
+                body:JSON.stringify({
+                    model: "gpt-4o-mini",
+                    message: [
+                    {
+                        "role": "developer",
+                        "content": "Tou are a helpful assistant."
+                    },
+                    {
+                        "role": "user",
+                        "content": 입력값
+                    }
+                    ]
+                }
+            )
+            });
+
+            let 제이슨 = await 응답결과.json()
+            console.log(제이슨)
+            
+            let text = 제이슨?.choices?.[0]?.messages?.content ?? "내용이 없습니다"
+
+            document.getElementById('pre').innerHTML += "\n\nCHATGPT: "+ text
+
+            document.getElementById('pre').innerHTML = text
+
+            // 다 끝나고
+            이미실행중 = false;
+
+        }
+        }
+
+        // https://platform.openai.com
+    }
+    </script>
+</body>
+</html>

@@ -1,9 +1,13 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo App</title>
+[TASK]
+- HTML과 JAVASCRIPT를 기반으로 한 CSS 완성
+
+[FEATURES]
+- CONTEXT를 참고해서 CSS를 적절하게 구성
+
+[CONSTRAINTS]
+- 기존의 HTML과 구조를 최대한 유지하면서 CSS 작성
+
+[CONTEXT]
     <style>
         *{
             margin: 0;
@@ -32,7 +36,7 @@
         <ul id="todoList"></ul>
     </div>
 
-    <script>
+<script>
         let 배열 = []
         
         function 등록하기(event){
@@ -81,6 +85,6 @@
             }
             }
         
-    </script>
+</script>
 </body>
 </html>
